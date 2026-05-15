@@ -12,7 +12,7 @@ export default function Nabvar () {
                 <img src="src/assets/imgs/logo-nav.jpg" alt="logo" className="w-full h-full object-cover rounded-md" />
             </a>
             {/* desktop */}
-            <nav className="hidden md:block">
+            <nav className="hidden lg:block">
                 <ul className="flex gap-8 items-center justify-end">
                     <li><a href="#home" className="text-2xl text-white font-normal hover:text-[#acabab] hover:underline">Home</a></li>
                     <li><a href="#about_us" className="text-2xl text-white font-normal hover:text-[#acabab] hover:underline">About Us</a></li>
@@ -24,7 +24,7 @@ export default function Nabvar () {
             </nav>
 
             {/* mobile */}
-            <div className="md:hidden flex justify-end relative">
+            <div className="lg:hidden flex justify-end relative">
                 <button className="relative cursor-pointer" onClick={() => setIsMobile(!isMobile)} >{isMobile ? <X color="#fff"/> : <Menu color="#fff" />}</button> 
                 {isMobile && (
                     <nav className="absolute top-9 right-0 bg-black p-4 rounded-lg w-[200px]">
