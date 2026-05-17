@@ -7,43 +7,63 @@ import { Navigation } from "swiper/modules";
 import 'swiper/css/navigation';
 import '../index.css'
 import { useRef } from "react";
+import { Link } from "react-router-dom";
+import dish1 from '../assets/imgs/dish1.png'
+import dish2 from '../assets/imgs/dish2.png'
+import dish3 from '../assets/imgs/dish3.jpg'
+import dish4 from '../assets/imgs/dish4.jpg'
+import dish5 from '../assets/imgs/dish5.webp'
+import dish6 from '../assets/imgs/dish6.jpg'
 
-const dishData = [
+
+export const dishData = [
     {
+        id: 1,
         title: 'ceaser salad',
         desc: 'Fresh, crunchy, and perfectly crisp, tossed in rich, creamy Caesar flavor.',
         price: '8.00',
-        img: 'src/assets/imgs/dish1.png'
+        img: dish1,
+        othersImg: [dish1, dish2, dish3,dish4]
     },
     {
+        id: 2,
         title: 'Classic Beef Burger',
         desc: 'Juicy beef patty with fresh lettuce, cheese, and signature sauce.',
         price: '8.00',
-        img: 'src/assets/imgs/dish2.png'
+        img: dish2,
+        othersImg: [dish1, dish2, dish3,dish4]
     },
     {
+        id: 3,
         title: 'Pepperoni Pizza',
         desc: 'Loaded with spicy pepperoni and melted mozzarella cheese.',
         price: '12.00',
-        img: 'src/assets/imgs/dish3.jpg'
+        img: dish3,
+        othersImg: [dish1, dish2, dish3,dish4]
     },
     {
+        id: 4,
         title: 'Chili Garlic Pasta',
         desc: 'Rich creamy sauce tossed with perfectly cooked pasta.',
         price: '10.00',
-        img: 'src/assets/imgs/dish4.jpg'
+        img: dish4,
+        othersImg: [dish1, dish2, dish3,dish4]
     },
     {
+        id: 5,
         title: 'Cappuccino Bliss',
         desc: 'A rich and creamy cappuccino with smooth espresso and frothy milk foam.',
         price: '6.00',
-        img: 'src/assets/imgs/dish5.webp'
+        img: dish5,
+        othersImg: [dish1, dish2, dish3,dish4]
     },
     {
+        id: 6,
         title: 'Beef Shami Kabab',
         desc: 'Soft beef kabab mixed with spices and lentils, lightly fried for a crispy texture.',
         price: '16.00',
-        img: 'src/assets/imgs/dish6.jpg'
+        img: dish6,
+        othersImg: [dish1, dish2, dish3,dish4]
     },
 ];
 
@@ -51,7 +71,7 @@ export default function SpecialDish () {
     const swiperRef = useRef<any>(null);
 
     return (
-        <section className="bg-[#000] py-12 md:py-18">
+        <section id="dish_section" className="bg-[#000] py-12 md:py-18">
             <div className="container">
                 <div className="mb-16 max-w-[650px] text-center mx-auto">
                     <div className="flex items-center justify-center gap-1 md:gap-2.5 mb-8">
@@ -87,8 +107,8 @@ export default function SpecialDish () {
                         },
                     }}
                 >
-                {dishData.map((item, index) => (
-                    <SwiperSlide key={index} className="!h-auto">
+                {dishData.map((item) => (
+                    <SwiperSlide key={item.id} className="!h-auto">
                         <div className="bg-[#0C0B0B] w-full h-full rounded-xl flex flex-col justify-between">
                             <div className="min-h-[300px] !md:h-[280px]">
                                 <img src={item.img} alt="dish-img" className="rounded-t-xl w-full h-full object-cover" />
@@ -97,7 +117,13 @@ export default function SpecialDish () {
                                 <h3 className="text-white text-xl font-bold mb-3 capitalize">{item.title}</h3>
                                 <p className="text-[#6D6D6D] text-sm mb-4">{item.desc}</p>
                                 <div className="flex gap-3 items-center justify-between">
-                                    <a href="#order" className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]">Order Now</a>
+                                    {/* <a href="#order" className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]">Order Now</a> */}
+                                     <Link 
+                                        to={`/cart/${item.id}`} 
+                                        className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]"
+                                    >
+                                        Order Now
+                                    </Link>
                                     <p className="text-[#FFD600] text-lg font-bold">${item.price}</p>
                                 </div>
                             </div>
