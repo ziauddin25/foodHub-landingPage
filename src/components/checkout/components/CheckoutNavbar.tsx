@@ -4,10 +4,12 @@ import { useUser } from "@clerk/clerk-react";
 import { SignedIn} from "@clerk/clerk-react";
 import { useCart } from "../../../context/CartContext";
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 export default function Navbar() {
    const { isSignedIn, user } = useUser();
     const {cartItems} = useCart();
     const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+    const [isAddItem, setIsAddItem] = useState(false);
 
     return (
         <div className="">
@@ -34,13 +36,17 @@ export default function Navbar() {
                         ):<a href="#user" className=""><UserRound /></a>
                     }
                     <span className='text-white'>|</span>
-                     <Link to="/cart" className="relative">
+                     <button className="relative cursor-pointer">
                         <ShoppingCart size={35} color="white" />
-
                         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                             {totalItems}
                         </span>
-                    </Link>
+                    </button>
+                    {isAddItem && (
+                        <div className="">
+                            
+                        </div>
+                    )}
                 </div>
             </div>
             {/* mobile */}
