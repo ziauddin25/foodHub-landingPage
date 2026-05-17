@@ -1,6 +1,7 @@
 import { Dot } from "lucide-react";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import logoImg from '../assets/imgs/logo-nav.jpg'
 
 export default function Footer () {
     return (
@@ -8,7 +9,7 @@ export default function Footer () {
             <div className="container flex flex-col md:flex-row justify-between items-center gap-14">
                 <div className="max-w-full md:max-w-[500px]">
                     <div className="max-w-[100px] mb-8">
-                       <a href="/" className=""> <img src="src/assets/imgs/logo-nav.jpg" alt="logo" className="w-full h-full object-cover rounded-md" /></a>
+                       <a href="/" className=""> <img src={logoImg} alt="logo" className="w-full h-full object-cover rounded-md" /></a>
                     </div>
                     <p className="text-lg font-normal text-white mb-12">Where flavor meets speed. Our fast food restaurant is dedicated to serving hot, delicious meals crafted for every craving. Quality food, friendly service, and unforgettable taste — all in one place.</p>
                     <div className="">
