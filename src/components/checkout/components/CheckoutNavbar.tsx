@@ -1,6 +1,16 @@
-import { Search, ShoppingCart, UserRound } from 'lucide-react'
-import logoImg from '../../../assets/imgs/logo-nav.jpg'
+import { Search, ShoppingCart, UserRound } from 'lucide-react';
+import logoImg from '../../../assets/imgs/logo-nav.jpg';
+import { useUser } from "@clerk/clerk-react";
+import { SignedIn} from "@clerk/clerk-react";
+import { useCart } from "../../../context/CartContext";
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 export default function Navbar() {
+   const { isSignedIn, user } = useUser();
+    const {cartItems} = useCart();
+    const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+    const [isAddItem, setIsAddItem] = useState(false);
+
     return (
         <div className="">
             {/* desktop */}
@@ -16,9 +26,27 @@ export default function Navbar() {
                     <button className="py-3 px-4 bg-[#FFC200] text-white rounded-tr-md rounded-br-md cursor-pointer hover:bg-[#eebc27]">Search</button>
                 </div>
                 <div className="flex items-center gap-4 text-white">
-                    <a href="#user" className=""><UserRound /></a>
+                    {isSignedIn ? (
+                        //  <SignedIn>
+                        //     <UserMenu />
+                        // </SignedIn>
+                        <div className="max-w-[35px] cursor-pointer">
+                            <img src={user.imageUrl} alt="user-img" className='rounded-full w-full h-full object cover' />
+                        </div>
+                        ):<a href="#user" className=""><UserRound /></a>
+                    }
                     <span className='text-white'>|</span>
-                    <a href="#cart" className=""><ShoppingCart /></a>
+                     <button className="relative cursor-pointer">
+                        <ShoppingCart size={35} color="white" />
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                            {totalItems}
+                        </span>
+                    </button>
+                    {isAddItem && (
+                        <div className="">
+                            
+                        </div>
+                    )}
                 </div>
             </div>
             {/* mobile */}
@@ -28,9 +56,14 @@ export default function Navbar() {
                         <a href="/" className=""> <img src={logoImg} alt="logo" className="w-full h-full object-cover rounded-md" /></a>
                     </div>
                     <div className="flex items-center gap-4 text-white">
-                        <a href="#user" className=""><UserRound /></a>
+                        {isSignedIn ? (
+                        <div className="max-w-[35px] cursor-pointer">
+                            <img src={user.imageUrl} alt="user-img" className='rounded-full w-full h-full object cover' />
+                        </div>
+                        ):<a href="#user" className=""><UserRound /></a>
+                        }
                         <span className='text-white'>|</span>
-                        <a href="#cart" className=""><ShoppingCart /></a>
+                        <a href="#cart" className=""><ShoppingCart size={35} /></a>
                     </div>
                 </div>
                 <div className="flex items-center text-white">

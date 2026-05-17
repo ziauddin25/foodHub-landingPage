@@ -14,6 +14,31 @@ import dish3 from '../assets/imgs/dish3.jpg'
 import dish4 from '../assets/imgs/dish4.jpg'
 import dish5 from '../assets/imgs/dish5.webp'
 import dish6 from '../assets/imgs/dish6.jpg'
+/* others imgs */
+// salad
+import salad1 from '../assets/imgs/others_imgs/salad1.jpg';
+import salad2 from '../assets/imgs/others_imgs/salad2.jpg';
+import salad3 from '../assets/imgs/others_imgs/salad3.jpg';
+//burger
+import burger1 from '../assets/imgs/burgers.jpg';
+import burger2 from '../assets/imgs/others_imgs/burger2.jpg';
+import burger3 from '../assets/imgs/others_imgs/burger3.jpg';
+//pizza
+import pizza1 from '../assets/imgs/menuPizza.jpg';
+import pizza2 from '../assets/imgs/others_imgs/pizza2.jpg';
+import pizza3 from '../assets/imgs/others_imgs/pizza3.jpg';
+//pizza
+import pasta1 from '../assets/imgs/others_imgs/pasta1.jpg';
+import pasta2 from '../assets/imgs/others_imgs/pasta2.jpg';
+import pasta3 from '../assets/imgs/others_imgs/pasta3.jpg';
+//pizza
+import coffee1 from '../assets/imgs/others_imgs/coffee1.jpg';
+import coffee2 from '../assets/imgs/others_imgs/coffee2.jpg';
+import coffee3 from '../assets/imgs/others_imgs/coffee3.jpg';
+//pizza
+import kabab1 from '../assets/imgs/others_imgs/kabab1.jpg';
+import kabab2 from '../assets/imgs/others_imgs/kabab2.jpg';
+import kabab3 from '../assets/imgs/others_imgs/kabab3.jpg';
 
 
 export const dishData = [
@@ -23,7 +48,7 @@ export const dishData = [
         desc: 'Fresh, crunchy, and perfectly crisp, tossed in rich, creamy Caesar flavor.',
         price: '8.00',
         img: dish1,
-        othersImg: [dish1, dish2, dish3,dish4]
+        othersImg: [salad1, salad2, salad3]
     },
     {
         id: 2,
@@ -31,7 +56,7 @@ export const dishData = [
         desc: 'Juicy beef patty with fresh lettuce, cheese, and signature sauce.',
         price: '8.00',
         img: dish2,
-        othersImg: [dish1, dish2, dish3,dish4]
+        othersImg: [burger1, burger2, burger3]
     },
     {
         id: 3,
@@ -39,7 +64,7 @@ export const dishData = [
         desc: 'Loaded with spicy pepperoni and melted mozzarella cheese.',
         price: '12.00',
         img: dish3,
-        othersImg: [dish1, dish2, dish3,dish4]
+        othersImg: [pizza1, pizza2, pizza3]
     },
     {
         id: 4,
@@ -47,7 +72,7 @@ export const dishData = [
         desc: 'Rich creamy sauce tossed with perfectly cooked pasta.',
         price: '10.00',
         img: dish4,
-        othersImg: [dish1, dish2, dish3,dish4]
+        othersImg: [pasta1, pasta2, pasta3]
     },
     {
         id: 5,
@@ -55,7 +80,7 @@ export const dishData = [
         desc: 'A rich and creamy cappuccino with smooth espresso and frothy milk foam.',
         price: '6.00',
         img: dish5,
-        othersImg: [dish1, dish2, dish3,dish4]
+        othersImg: [coffee1, coffee2, coffee3]
     },
     {
         id: 6,
@@ -63,7 +88,7 @@ export const dishData = [
         desc: 'Soft beef kabab mixed with spices and lentils, lightly fried for a crispy texture.',
         price: '16.00',
         img: dish6,
-        othersImg: [dish1, dish2, dish3,dish4]
+        othersImg: [kabab1, kabab2, kabab3]
     },
 ];
 
@@ -119,7 +144,7 @@ export default function SpecialDish () {
                                 <div className="flex gap-3 items-center justify-between">
                                     {/* <a href="#order" className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]">Order Now</a> */}
                                      <Link 
-                                        to={`/cart/${item.id}`} 
+                                        to={`/checkout/${item.id}`} 
                                         className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]"
                                     >
                                         Order Now
