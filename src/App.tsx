@@ -11,6 +11,7 @@ import CartPage from './components/cart/components/Cart';
 import SignInPage from "./pages/SignInPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Checkout from "./components/checkout/components/Checkout";
+import ProceedToCheckout from "./components/proceedToCheckout/components/ProceedToCheckout";
 function HomePage() {
   return (
     <>
@@ -32,6 +33,7 @@ function App() {
 
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/cart/:id" element={<CartPage />} />
+           <Route path="/proceedToCheckout" element={<ProceedToCheckout />} />
           <Route
             path="/checkout/:id"
             element={
