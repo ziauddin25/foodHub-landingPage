@@ -6,10 +6,11 @@ import { useCart } from "../../../context/CartContext";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 export default function Navbar() {
-   const { isSignedIn, user } = useUser();
+    const { isSignedIn, user } = useUser();
     const {cartItems} = useCart();
     const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
-    const [isAddItem, setIsAddItem] = useState(false);
+
+
 
     return (
         <div className="">
@@ -36,17 +37,44 @@ export default function Navbar() {
                         ):<a href="#user" className=""><UserRound /></a>
                     }
                     <span className='text-white'>|</span>
-                     <button className="relative cursor-pointer">
-                        <ShoppingCart size={35} color="white" />
-                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                            {totalItems}
-                        </span>
-                    </button>
-                    {isAddItem && (
-                        <div className="">
-                            
-                        </div>
-                    )}
+                    <div className="">
+                        <button className="relative cursor-pointer" onClick={()=> setIsAddItem(!isAddItem)}>
+                            <ShoppingCart size={35} color="white" />
+                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                                {totalItems}
+                            </span>
+                        </button>
+                        {/* {isAddItem && (
+                            <div className="fixed top-0 right-0 w-[600px] h-[100vh] p-6 bg-[#111] overflow-x-scroll">
+                                <div className="cursor-pointer text-end" onClick={() => setIsAddItem(false)}>close</div>
+                                {cartItems.map((item) => (
+                                    <div
+                                        key={item.id}
+                                        className="flex items-center gap-5 mb-7"
+                                    >
+                                        <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-28 h-28 object-cover rounded-lg"
+                                        />
+
+                                        <div>
+                                        <h2 className="text-xl font-bold">{item.title}</h2>
+
+                                        <p className="text-yellow-400 text-lg">
+                                            ${item.price}
+                                        </p>
+
+                                        <p className="text-gray-400">
+                                            Quantity: {item.quantity}
+                                        </p>
+                                        </div>
+                                    </div>
+                                ))}
+                                {totalItems === 0 ? <div className='text-center text-white'>No Cart Addd!</div> :''}
+                            </div>
+                        )} */}
+                    </div>
                 </div>
             </div>
             {/* mobile */}

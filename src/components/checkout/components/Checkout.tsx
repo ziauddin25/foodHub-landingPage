@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { dishData } from "../../SpecialDish"; 
 import CheckoutNavbar from '../components/CheckoutNavbar'
-import { Minus, Plus, Star } from "lucide-react";
+import { Check, Minus, Plus, Star } from "lucide-react";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
@@ -12,6 +12,7 @@ import { useCart } from "../../../context/CartContext";
 export default function CartPage() {
   const { id } = useParams();
   const selectedDish = dishData.find((dish) => dish.id === Number(id));
+  const [isBadge, setIsBadge] = useState(false);
 
   if (!selectedDish) {
     return (
@@ -51,24 +52,33 @@ export default function CartPage() {
 
     const { addToCart } = useCart();
     const handleAddToCart = () => {
-    if (!isSignedIn) {
-        navigate(`/sign-in?redirect=/cart/${id}`);
-        return;
-    }
+    // if (!isSignedIn) {
+    //     navigate(`/sign-in?redirect=/cart/${id}`);
+    //     return;
+    // }
 
-    addToCart({
-        id: selectedDish.id,
-        title: selectedDish.title,
-        price: Number(selectedDish.price),
-        image: selectedDish.img,
-        quantity: quantity,
-    });
+        addToCart({
+            id: selectedDish.id,
+            title: selectedDish.title,
+            price: Number(selectedDish.price),
+            image: selectedDish.img,
+            quantity: quantity,
+        });
 
-    navigate(`/cart/${id}`);
+        setIsBadge(true);
+
+        setTimeout(() => {
+            setIsBadge(false)
+        }, 2000);
     };
 
+    // navigate(`/cart/${id}`);
+    // };
+
+    
+
   return (
-    <section className="bg-black pb-12 md:pb-18">
+    <section className="bg-black pb-12 md:pb-18 relative">
         <div className="container">
             <CheckoutNavbar />
             <nav className="text-white mb-4">
@@ -143,8 +153,12 @@ export default function CartPage() {
                     <button onClick={handleAddToCart} className="w-full text-lg cursor-pointer text-white py-3 text-center bg-[#FFC200] hover:bg-[#eebc27] rounded-md">Add to cart</button>
                     <button onClick={handleBuyNow} className="w-full text-lg cursor-pointer text-black py-3 text-center bg-white hover:bg-[#d6d5d5] rounded-md">Buy now</button>
                   </div>
+                  {isBadge && (
+                     <div className="flex py-3 px-5 gap-1.5 items-center rounded-md bg-[#FFC200] fixed bottom-4 right-4">
+                       <Check color="#fff"/> <p className="text-white text-lg">Add to cart</p>
+                     </div>
+                  )}
                 </div>
-              {/* </div> */}
             </div>
         </div>
     </section>
