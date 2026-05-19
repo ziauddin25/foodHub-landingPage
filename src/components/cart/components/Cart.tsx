@@ -55,8 +55,8 @@ export default function Cart() {
     <section className="bg-black pb-12 md:pb-18">
       <div className="container">
         <CheckoutNavbar />
-        <div className="flex justify-between gap-7 md:gap-5 flex-col md:flex-row">
-          <div className="w-full md:w-[63%]">
+        <div className="flex justify-between items-start gap-7 md:gap-5 flex-col md:flex-row">
+          <div className="w-full md:w-[63%] ">
             {cartItems.map((item) => (
               <div
                 key={item.id}
@@ -68,7 +68,7 @@ export default function Cart() {
                     (selected) => selected.id === item.id
                   )}
                   onChange={() => handleSelect(item)}
-                  className="accent-yellow-400 w-5 h-5"
+                  className="accent-yellow-400 w-5 h-5 cursor-pointer"
                 />
                 <img
                   src={item.image}
