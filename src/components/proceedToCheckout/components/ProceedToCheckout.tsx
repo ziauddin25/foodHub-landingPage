@@ -157,6 +157,7 @@ export default function ProceedToCheckout() {
                         <h3 className="text-[#6D6D6D] text-base">Vat(0%)</h3>
                         <p className="text-[#FFC200] text-base">${0}</p>
                     </div>
+                    <button className=""></button>
                 </div>
             </div>
             </div>
