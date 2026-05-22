@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import CheckoutNavbar from '../../checkout/components/CheckoutNavbar';
 import { useState } from "react";
+import { Minus, Plus } from "lucide-react";
 type CartItem = {
   id: number;
   title: string;
@@ -12,6 +13,7 @@ export default function ProceedToCheckout() {
     const location = useLocation();
     const selectedItems = location.state?.items || [];
     const [paymentMethod, setPaymentMethod] = useState('cod');
+    const [quantity, setQuantity] = useState(1);
     const subtotal = selectedItems.reduce((total:number, item:CartItem) =>
         total + item.price * (item.quantity || 1),
         0
@@ -26,6 +28,16 @@ export default function ProceedToCheckout() {
             total + (item.quantity || 1),
         0
     );
+
+    const increase = ()=> {
+        setQuantity(quantity + 1);
+    };
+
+    const decrease = () => {
+        if (quantity > 1) {
+        setQuantity(quantity - 1);
+        }
+    };
     
     return (
         <div className="pb-12 md:pb-18 bg-black">
@@ -120,24 +132,30 @@ export default function ProceedToCheckout() {
                             <img
                             src={item.image}
                             alt={item.title}
-                            className="w-28 h-28 object-cover rounded-lg"
+                            className="w-32 h-34 object-cover rounded-md"
                             />
 
                             <div>
                             <h2 className="text-xl font-bold text-white">{item.title}</h2>
 
-                            <p className="text-[#FFC200] text-lg">
-                                ${item.price}
-                            </p>
-
-                            <p className="text-gray-400">
-                                Quantity: {item.quantity}
-                            </p>
+                            <div className="flex justify-between items-center mb-4">
+                                <p className="text-gray-400">
+                                    Quantity: {item.quantity}
+                                </p>
+                                <p className="text-[#FFC200] text-lg">
+                                    ${item.price}
+                                </p>
+                            </div>
+                            <div className="flex items-center gap-2 inline-flex bg-white rounded-lg">
+                                <button onClick={decrease} className="p-2 cursor-pointer hover:bg-[#d6d5d5] transition durition-300 ease text-[#302D2D] text-base bg-white rounded-tl-md rounded-bl-md "><Minus /></button>
+                                <p className="text-black text-base">{quantity}</p>
+                                <button onClick={totalQuantity} className="p-2 cursor-pointer hover:bg-[#d6d5d5] transition durition-300 ease text-[#302D2D] text-base bg-white rounded-tr-md rounded-br-md "><Plus /></button>
+                            </div>
                             </div>
                         </div>
                     ))}
                     </div>
-                    <div className="flex items-center justify-between border-b pb-5 mb-5 border-[#FFC200] ">
+                    <div className="flex items-center justify-between border-b pb-5 mb-5 border-[#FFC200]">
                         <h3 className="text-white text-xl font-bold">Subtotal</h3>
                         <p className="text-[#FFC200] text-xl">${subtotal}</p>
                     </div>
@@ -153,11 +171,11 @@ export default function ProceedToCheckout() {
                         <h3 className="text-[#6D6D6D] text-base">Delivery Service</h3>
                         <p className="text-[#FFC200] text-base">${subtotal}</p>
                     </div>
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center justify-between border-b pb-5 mb-8 border-[#FFC200]">
                         <h3 className="text-[#6D6D6D] text-base">Vat(0%)</h3>
                         <p className="text-[#FFC200] text-base">${0}</p>
                     </div>
-                    <button className=""></button>
+                    <button className="bg-[#FFC200] text-lg text-white w-full py-2.5 rounded-lg">Pay${subtotal}</button>
                 </div>
             </div>
             </div>
