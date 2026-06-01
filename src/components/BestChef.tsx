@@ -1,32 +1,37 @@
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import titleImg from '../assets/imgs/logo.png';
+import chef1 from '../assets/imgs/chef-1.jpg';
+import chef2 from '../assets/imgs/chef-2.jpg';
+import chef3 from '../assets/imgs/chef-3.jpg';
+import chef4 from '../assets/imgs/chef-4.jpg';
 
 const chefData = [
     {
         title: 'Richard Nauz',
-        img: 'src/assets/imgs/chef-1.jpg'
+        img: chef1,
     },
     {
         title: 'Classic Beef Burger',
-        img: 'src/assets/imgs/chef-2.jpg'
+        img: chef2,
     },
     {
         title: 'Pepperoni Pizza',
-        img: 'src/assets/imgs/chef-3.jpg'
+        img:chef3,
     },
     {
         title: 'Chili Garlic Pasta',
-        img: 'src/assets/imgs/chef-4.jpg'
+        img: chef4
     },
 ];
 
 export default function BestChef () {
     return (
-        <section className="bg-[#000000] py-12 md:py-18">
+        <section className="bg-[#000000] py-12 md:py-18" id="chefs">
             <div className="container">
                 <div className="mb-16 max-w-[650px] text-center mx-auto">
                     <div className="flex items-center justify-center gap-2 md:gap-2.5 mb-8">
                         <div className="max-w-[34px] md:max-w-[76px]">
-                            <img src="src/assets/imgs/logo.png" alt="logo" className="w-full h-full object-cover" />
+                            <img src={titleImg} alt="logo" className="w-full h-full object-cover" />
                         </div>
                         <h2 className="text-[#fff] text-[32px] md:text-5xl font-bold">Our best chef</h2>
                     </div>

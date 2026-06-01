@@ -1,38 +1,45 @@
 import { CirclePlay } from "lucide-react";
+import titleImg from '../assets/imgs/logo.png';
+import video1 from '../assets/imgs/galleryVideo-1.mp4';
+import img1 from '../assets/imgs/gallery-2.jpg';
+import video2 from '../assets/imgs/galleryVideo-3.mp4';
+import img2 from '../assets/imgs/gallery-4.jpg';
+import video3 from '../assets/imgs/galleryVideo-2.mp4';
+import img3 from '../assets/imgs/gallery-6.jpg';
 
 const galleryImgs = [
     {
         isVideo: true,
-        video: 'src/assets/imgs/galleryVideo-1.mp4',
+        video: video1,
     },
     {
-        img: 'src/assets/imgs/gallery-2.jpg',
-    },
-    {
-        isVideo: true,
-        video: 'src/assets/imgs/galleryVideo-3.mp4',
-    },
-    {
-        img: 'src/assets/imgs/gallery-4.jpg',
+        img: img1,
     },
     {
         isVideo: true,
-        video: 'src/assets/imgs/galleryVideo-2.mp4',
+        video: video2,
     },
     {
-        img: 'src/assets/imgs/gallery-6.jpg',
+        img: img2,
+    },
+    {
+        isVideo: true,
+        video: video3,
+    },
+    {
+        img: img3,
     },
 ];
 
 export default function Gallery () {
 
     return (
-        <section className="py-12 md:py-18 bg-[#000000]">
+        <section className="py-12 md:py-18 bg-[#000000]" id="gallery">
             <div className="container">
                 <div className="mb-16 max-w-[500px] text-center mx-auto">
                     <div className="flex items-center justify-center gap-1 md:gap-2.5 mb-8">
                         <div className="max-w-[34px] md:max-w-[76px]">
-                            <img src="src/assets/imgs/logo.png" alt="logo" className="w-full h-full object-cover" />
+                            <img src={titleImg} alt="logo" className="w-full h-full object-cover" />
                         </div>
                         <h2 className="text-[#fff] text-[32px] md:text-5xl font-bold">Gallery</h2>
                     </div>

@@ -1,6 +1,7 @@
 
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import navLogo from '../assets/imgs/logo-nav.jpg';
 
 export default function Nabvar () {
 
@@ -9,12 +10,12 @@ export default function Nabvar () {
     return (
         <div className="py-7 flex items-center justify-between">
             <a href="#" className="max-w-[100px]">
-                <img src="src/assets/imgs/logo-nav.jpg" alt="logo" className="w-full h-full object-cover rounded-md" />
+                <img src={navLogo} alt="logo" className="w-full h-full object-cover rounded-md" />
             </a>
             {/* desktop */}
             <nav className="hidden lg:block">
                 <ul className="flex gap-8 items-center justify-end">
-                    <li><a href="#home" className="text-2xl text-white font-normal hover:text-[#acabab] hover:underline">Home</a></li>
+                    <li><a href="/" className="text-2xl text-white font-normal hover:text-[#acabab] hover:underline">Home</a></li>
                     <li><a href="#about_us" className="text-2xl text-white font-normal hover:text-[#acabab] hover:underline">About Us</a></li>
                     <li><a href="#chefs" className="text-2xl text-white font-normal hover:text-[#acabab] hover:underline">Chefs</a></li>
                     <li><a href="#menu" className="text-2xl text-white font-normal hover:text-[#acabab] hover:underline">Menu</a></li>

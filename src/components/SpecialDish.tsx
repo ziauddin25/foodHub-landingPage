@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import titleImg from '../assets/imgs/logo.png';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -101,7 +102,7 @@ export default function SpecialDish () {
                 <div className="mb-16 max-w-[650px] text-center mx-auto">
                     <div className="flex items-center justify-center gap-1 md:gap-2.5 mb-8">
                         <div className="max-w-[34px] md:max-w-[76px]">
-                            <img src="src/assets/imgs/logo.png" alt="logo" className="w-full h-full object-cover" />
+                            <img src={titleImg} alt="logo" className="w-full h-full object-cover" />
                         </div>
                         <h2 className="text-[#fff] text-[32px] md:text-5xl font-bold">Our Special Dishes</h2>
                     </div>

@@ -1,5 +1,6 @@
 import { Coffee, Hamburger, Menu, Pizza, Popcorn, Salad } from "lucide-react";
 import { useEffect, useState } from "react";
+import titleImg from '../assets/imgs/kitchen-logo.jpg';
 
 interface MenuItem {
     cat: string[]; 
@@ -23,7 +24,7 @@ export default function OurMenu () {
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     useEffect (()=> {
         const menuData = async ()=> {
-            const res = await fetch('public/data/MenuData.json');
+            const res = await fetch('/data/MenuData.json');
             const data = await res.json();
             setMenuItems(data);
         }
@@ -39,12 +40,12 @@ export default function OurMenu () {
     const [isMobile, setIsMobile] =useState(false);
     
     return (
-        <section className="py-12 md:py-18 bg-[#0C0B0B]">
+        <section className="py-12 md:py-18 bg-[#0C0B0B]" id="menu">
             <div className="container">
                 <div className="mb-16 max-w-[650px] text-center mx-auto">
                     <div className="flex items-center justify-center gap-2 md:gap-2.5 mb-8">
                         <div className="max-w-[34px] md:max-w-[76px]">
-                            <img src="src/assets/imgs/kitchen-logo.jpg" alt="logo" className="w-full h-full object-cover" />
+                            <img src={titleImg} alt="logo" className="w-full h-full object-cover" />
                         </div>
                         <h2 className="text-[#fff] text-[32px] md:text-5xl font-bold">Our Menu</h2>
                     </div>
