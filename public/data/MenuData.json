@@ -3,49 +3,49 @@
         "title": "ceaser salad",
         "desc": "Fresh, crunchy, and perfectly crisp, tossed in rich, creamy Caesar flavor.",
         "price": "8.00",
-        "img": "src/assets/imgs/dish1.png"
+        "img": "/img/dish1.png"
     },
     {   "cat": ["All","Burgers"],
         "title": "Classic Beef Burger",
         "desc": "Juicy beef patty with fresh lettuce, cheese, and signature sauce.",
         "price": "8.00",
-        "img": "src/assets/imgs/dish2.png"
+        "img": "/img/dish2.png"
     },
     {   "cat": ["All","Pizzas"],
         "title": "Pepperoni Pizza",
         "desc": "Loaded with spicy pepperoni and melted mozzarella cheese.",
         "price": "12.00",
-        "img": "src/assets/imgs/dish3.jpg"
+        "img": "/img/dish3.jpg"
     },
     {   "cat": ["All","Snacks"],
         "title": "Chili Garlic Pasta",
         "desc": "Rich creamy sauce tossed with perfectly cooked pasta.",
         "price": "10.00",
-        "img": "src/assets/imgs/dish4.jpg"
+        "img": "/img/dish4.jpg"
     },
     {   "cat": ["All","Drinks"],
         "title": "Cappuccino Bliss",
         "desc": "A rich and creamy cappuccino with smooth espresso and frothy milk foam.",
         "price": "6.00",
-        "img": "src/assets/imgs/dish5.webp"
+        "img": "/img/dish5.webp"
     },
     {   "cat": ["All"],
         "title": "Beef Shami Kabab",
         "desc": "Soft beef kabab mixed with spices and lentils, lightly fried for a crispy texture.",
         "price": "16.00",
-        "img": "src/assets/imgs/dish6.jpg"
+        "img": "/img/dish6.jpg"
     },
     {   "cat": ["Drinks"],
         "title": "Lemonade",
         "desc": "Loaded with spicy pepperoni and melted mozzarella cheese.",
         "price": "5.00",
-        "img": "src/assets/imgs/lemon.jpg"
+        "img": "/img/lemon.jpg"
     },
     {   "cat": ["Burgers"],
         "title": "Classic Beef Burger",
         "desc": "Juicy beef patty with fresh lettuce, cheese, and signature sauce.",
         "price": "8.00",
-        "img": "src/assets/imgs/burgers.jpg"
+        "img": "/img/burgers.jpg"
     },
 
     {
@@ -53,69 +53,69 @@
         "title": "Mediterranean Quinoa Salad",
         "desc": "A refreshing mix of quinoa, cucumbers, cherry tomatoes, olives, feta cheese, and lemon herb dressing.",
         "price": "9.50",
-        "img": "src/assets/imgs/quinoa-salad.jpg"
+        "img": "/img/quinoa-salad.jpg"
     },
     {
         "cat": ["Burgers"],
         "title": "Smoky BBQ Angus Burger",
         "desc": "Flame-grilled Angus beef topped with cheddar cheese, crispy onions, smoky BBQ sauce, and pickles.",
         "price": "13.00",
-        "img": "src/assets/imgs/dish2.png"
+        "img": "/img/dish2.png"
     },
     {
         "cat": ["Pizzas"],
         "title": "Truffle Mushroom Pizza",
         "desc": "Stone-baked pizza layered with mozzarella, sautéed mushrooms, truffle oil, and parmesan flakes.",
         "price": "15.00",
-        "img": "src/assets/imgs/menuPizza.jpg"
+        "img": "/img/menuPizza.jpg"
     },
     {
         "cat": ["Snacks"],
         "title": "Loaded Nachos Supreme",
         "desc": "Crunchy tortilla chips topped with melted cheese, jalapeños, salsa, sour cream, and spicy beef.",
         "price": "11.00",
-        "img": "src/assets/imgs/nachos.jpg"
+        "img": "/img/nachos.jpg"
     },
     {
         "cat": ["All","Drinks"],
         "title": "Iced Caramel Latte",
         "desc": "Chilled espresso blended with creamy milk, caramel syrup, and topped with whipped cream.",
         "price": "6.50",
-        "img": "src/assets/imgs/iced-latte.jpg"
+        "img": "/img/iced-latte.jpg"
     },
     {
         "cat": ["Drinks"],
         "title": "Chocolate Lava Cake",
         "desc": "Warm chocolate cake with a gooey molten center, served with vanilla ice cream.",
         "price": "7.50",
-        "img": "src/assets/imgs/lava-cake.jpg"
+        "img": "/img/lava-cake.jpg"
     },
     {
         "cat": ["All", "Snacks"],
         "title": "Garlic Butter Grilled Salmon",
         "desc": "Fresh salmon fillet grilled to perfection with garlic butter sauce and seasonal vegetables.",
         "price": "18.00",
-        "img": "src/assets/imgs/salmon.jpg"
+        "img": "/img/salmon.jpg"
     },
     {
         "cat": ["Snacks"],
         "title": "Thai Basil Chicken Rice Bowl",
         "desc": "Spicy Thai-style chicken stir-fried with basil, garlic, and chili served over jasmine rice.",
         "price": "12.50",
-        "img": "src/assets/imgs/thai-basil.jpg"
+        "img": "/img/thai-basil.jpg"
     },
     {
         "cat": ["Drinks"],
         "title": "Fresh Mango Smoothie",
         "desc": "Sweet ripe mangoes blended with yogurt and ice for a tropical refreshing drink.",
         "price": "5.50",
-        "img": "src/assets/imgs/mango-smoothie.jpg"
+        "img": "/img/mango-smoothie.jpg"
     },
     {
         "cat": ["Snacks"],
         "title": "Creamy Tuscan Chicken Pasta",
         "desc": "Tender chicken tossed in creamy garlic parmesan sauce with spinach and sun-dried tomatoes.",
         "price": "14.00",
-        "img": "src/assets/imgs/tuscan-pasta.jpg"
+        "img": "/img/tuscan-pasta.jpg"
     }
 ]
