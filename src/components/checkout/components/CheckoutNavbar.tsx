@@ -1,13 +1,13 @@
 import { Search, ShoppingCart, UserRound } from 'lucide-react';
 import logoImg from '../../../assets/imgs/logo-nav.jpg';
 import { useUser } from "@clerk/clerk-react";
-import { SignedIn} from "@clerk/clerk-react";
+// import { SignedIn} from "@clerk/clerk-react";
 import { useCart } from "../../../context/CartContext";
 import { UserButton } from "@clerk/clerk-react";
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 export default function Navbar() {
-    const { isSignedIn, user } = useUser();
+    const { isSignedIn } = useUser();
     const navigate = useNavigate();
     const {cartItems} = useCart();
     const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);

@@ -19,9 +19,9 @@ export default function ProceedToCheckout() {
         0
     );
 
-    const discount = 2;
-    const promo = subtotal * discount / 100;
-    const finalDiscount = subtotal - promo;  
+    // const discount = 2;
+    // const promo = subtotal * discount / 100;
+    // const finalDiscount = subtotal - promo;  
 
     const totalQuantity = selectedItems.reduce(
         (total: number, item: CartItem) =>
@@ -29,9 +29,9 @@ export default function ProceedToCheckout() {
         0
     );
 
-    const increase = ()=> {
-        setQuantity(quantity + 1);
-    };
+    // const increase = ()=> {
+    //     setQuantity(quantity + 1);
+    // };
 
     const decrease = () => {
         if (quantity > 1) {

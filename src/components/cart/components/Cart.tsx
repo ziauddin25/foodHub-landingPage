@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../../../context/CartContext";
 import CheckoutNavbar from '../../checkout/components/CheckoutNavbar';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
 
 type CartItem = {
@@ -15,7 +15,7 @@ type CartItem = {
 export default function Cart() {
   const { cartItems } = useCart();
   const [selectItem, setSelectItem] = useState<CartItem []>([]);
-  const { id } = useParams();
+  // const { id } = useParams();
   const navigate = useNavigate();
   const {isSignedIn} = useUser();
 
