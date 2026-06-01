@@ -1,5 +1,7 @@
 import { CirclePause, CirclePlay } from "lucide-react";
 import { useRef, useState } from "react";
+import titleImg from '../assets/imgs/kitchen-logo.jpg';
+import bestFoodVideo from '../assets/imgs/foodVideo.mp4';
 
 function BestFood () {
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -23,7 +25,7 @@ function BestFood () {
                 <div className="mb-16 max-w-[700px] text-center mx-auto">
                     <div className="flex items-center justify-center gap-2 md:gap-2.5 mb-8">
                         <div className="hidden md:block max-w-[76px]">
-                            <img src="src/assets/imgs/kitchen-logo.jpg" alt="logo" className="w-full h-full object-cover" />
+                            <img src={titleImg} alt="logo" className="w-full h-full object-cover" />
                         </div>
                         <h2 className="text-[#fff] text-[32px] md:text-5xl font-bold">Fuel Your Body, Fuel Your Mind.</h2>
                     </div>
@@ -35,7 +37,7 @@ function BestFood () {
                  >
                     <video className="rounded-3xl" 
                         ref={videoRef}
-                        src="src/assets/imgs/foodVideo.mp4"
+                        src={bestFoodVideo}
                         controls muted autoPlay
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)} 
