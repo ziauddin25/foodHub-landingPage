@@ -39,7 +39,7 @@ export default function CartPage() {
 
   //  cart redirct
 
-  const {isSignedIn} = useUser();
+  // const {isSignedIn} = useUser();
   const navigate = useNavigate();
 
   // const handleBuyNow = () => {
@@ -68,11 +68,6 @@ export default function CartPage() {
 
     const { addToCart } = useCart();
     const handleAddToCart = () => {
-    // if (!isSignedIn) {
-    //     navigate(`/sign-in?redirect=/cart/${id}`);
-    //     return;
-    // }
-
       addToCart({
         id: selectedDish.id,
         title: selectedDish.title,

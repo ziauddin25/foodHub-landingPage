@@ -96,10 +96,6 @@ export default function Cart() {
               <p className="text-white text-lg">Subtotal ({selectItem.length})</p>
               <p className="text-white text-base">{subtotal}</p>
             </div>
-            <div className="flex items-center gap-3 mb-4">
-              <input type="text" className="py-2.5 px-3 w-[80%] text-black bg-white border-gray-400 border focus:outline-none" />
-              <button className="py-2.5 px-7 rounded-sm bg-[#FFC200] text-white cursor-pointer hover:bg-[#eebc27]">Apply</button>
-            </div>
             <div className="flex items-center justify-between mb-12">
               <p className="text-white text-base">Total:</p>
               <p className="text-white text-base">{subtotal}</p>
