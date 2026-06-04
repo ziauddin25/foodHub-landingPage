@@ -15,7 +15,7 @@ export default function ProceedToCheckout() {
     // const selectedItems = location.state?.items || [];
     const [paymentMethod, setPaymentMethod] = useState('cod');
     const [promoCode] = useState('');
-    const [completedOrder, setCompletedOrder ] = useState(false);
+    // const [completedOrder, setCompletedOrder ] = useState(false);
     const [cartItems, setCartItems] = useState<CartItem[]>( location.state?.items || []);
     const [showModal, setShowModal] = useState(false);
     const [orderStatus, setOrderStatus] = useState(""); // success | failed

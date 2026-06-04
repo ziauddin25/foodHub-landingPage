@@ -4,7 +4,7 @@ import CheckoutNavbar from '../components/CheckoutNavbar'
 import { Check, Minus, Plus, Star } from "lucide-react";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { useState } from "react";
-import { useUser } from "@clerk/clerk-react";
+// import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../context/CartContext";
 
