@@ -42,13 +42,29 @@ export default function CartPage() {
   const {isSignedIn} = useUser();
   const navigate = useNavigate();
 
-  const handleBuyNow = () => {
-    if (!isSignedIn) {
-      navigate(`/sign-in?redirect=/checkout/${id}`);
-    } else {
-      navigate(`/checkout/${id}`);
-    }
+  // const handleBuyNow = () => {
+  //   if (!isSignedIn) {
+  //     navigate(`/sign-in?redirect=/checkout/${id}`);
+  //   } else {
+  //     navigate(`/checkout/${id}`);
+  //   }
+  // };
+
+  const handleBuy = () => {
+  const product = {
+    id: selectedDish.id,
+    title: selectedDish.title,
+    price: Number(selectedDish.price),
+    image: selectedDish.img,
+    quantity,
   };
+
+  navigate("/ProceedToCheckout", {
+    state: {
+      items: [product],
+    },
+  });
+};
 
     const { addToCart } = useCart();
     const handleAddToCart = () => {
@@ -57,19 +73,20 @@ export default function CartPage() {
     //     return;
     // }
 
-        addToCart({
-            id: selectedDish.id,
-            title: selectedDish.title,
-            price: Number(selectedDish.price),
-            image: selectedDish.img,
-            quantity: quantity,
-        });
+      addToCart({
+        id: selectedDish.id,
+        title: selectedDish.title,
+        price: Number(selectedDish.price),
+        // totalPrice: totalPrice,
+        image: selectedDish.img,
+        quantity: quantity,
+      });
 
-        setIsBadge(true);
+      setIsBadge(true);
 
-        setTimeout(() => {
-            setIsBadge(false)
-        }, 2000);
+      setTimeout(() => {
+        setIsBadge(false)
+      }, 2000);
     };
 
     // navigate(`/cart/${id}`);
@@ -140,7 +157,7 @@ export default function CartPage() {
                     <p className="text-[#6D6D6D] text-base">26 Reviews</p>
                   </div>
                   <p className="text-[#6D6D6D] text-xl mb-4">{selectedDish.desc}</p>
-                  <p className="text-[#FFD600] text-lg font-bold">${selectedDish.price}</p>
+                  <p className="text-[#FFD600] text-lg font-bold">${(Number(selectedDish.price)) * quantity}</p>
                   <div className="mb-5">
                     <h3 className="text-lg text-white font-bold mb-4">Quantity</h3>
                     <div className="flex items-center gap-2 inline-flex bg-white rounded-lg">
@@ -151,7 +168,7 @@ export default function CartPage() {
                   </div>
                   <div className="flex items-center gap-3 max-w-full md:max-w-[80%]">
                     <button onClick={handleAddToCart} className="w-full text-lg cursor-pointer text-white py-3 text-center bg-[#FFC200] hover:bg-[#eebc27] rounded-md">Add to cart</button>
-                    <button onClick={handleBuyNow} className="w-full text-lg cursor-pointer text-black py-3 text-center bg-white hover:bg-[#d6d5d5] rounded-md">Buy now</button>
+                    <button onClick={handleBuy} className="w-full text-lg cursor-pointer text-black py-3 text-center bg-white hover:bg-[#d6d5d5] rounded-md">Buy now</button>
                   </div>
                   {isBadge && (
                      <div className="flex py-3 px-5 gap-1.5 items-center rounded-md bg-[#FFC200] fixed bottom-4 right-4">

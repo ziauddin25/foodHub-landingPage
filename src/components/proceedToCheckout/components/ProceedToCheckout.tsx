@@ -13,31 +13,57 @@ export default function ProceedToCheckout() {
     const location = useLocation();
     const selectedItems = location.state?.items || [];
     const [paymentMethod, setPaymentMethod] = useState('cod');
-    const [quantity, setQuantity] = useState(1);
-    const subtotal = selectedItems.reduce((total:number, item:CartItem) =>
-        total + item.price * (item.quantity || 1),
-        0
+    // const [quantity, setQuantity] = useState(1);
+    const [cartItems, setCartItems] = useState<CartItem[]>(
+        location.state?.items || []
+    );
+    // const subtotal = selectedItems.reduce((total:number, item:CartItem) =>
+    //     total + item.price * (item.quantity || 1),
+    //     0
+    // );
+
+    const subtotal = cartItems.reduce(
+        (total, item) => total + item.price * (item.quantity || 1), 0
+    );
+
+    const totalQuantity = cartItems.reduce(
+        (total, item) => total + (item.quantity || 1),0
     );
 
     // const discount = 2;
     // const promo = subtotal * discount / 100;
     // const finalDiscount = subtotal - promo;  
 
-    const totalQuantity = selectedItems.reduce(
-        (total: number, item: CartItem) =>
-            total + (item.quantity || 1),
-        0
-    );
+    // const totalQuantity = selectedItems.reduce(
+    //     (total: number, item: CartItem) =>
+    //         total + (item.quantity || 1),
+    //     0
+    // );
 
-    // const increase = ()=> {
-    //     setQuantity(quantity + 1);
-    // };
-
-    const decrease = () => {
-        if (quantity > 1) {
-        setQuantity(quantity - 1);
-        }
+    const increase = (id: number) => {
+        setCartItems((prev) =>
+            prev.map((item) =>
+            item.id === id
+                ? { ...item, quantity: (item.quantity || 1) + 1 }
+                : item
+            )
+        );
     };
+    
+
+    const decrease = (id: number) => {
+        setCartItems((prev) =>
+            prev.map((item) =>
+            item.id === id
+                ? {
+                    ...item,
+                    quantity: Math.max(1, (item.quantity || 1) - 1),
+                }
+                : item
+            )
+        );
+    };
+    
     
     return (
         <div className="pb-12 md:pb-18 bg-black">
@@ -124,7 +150,7 @@ export default function ProceedToCheckout() {
                         <p className="text-[#6D6D6D] text-lg mb-6">The sum of all total payments for goods there</p>
                     </div>
                     <div className="">
-                        {selectedItems.map((item:CartItem) => (
+                        {cartItems.map((item:CartItem) => (
                         <div
                             key={item.id}
                             className="flex items-center gap-5 mb-7"
@@ -143,13 +169,13 @@ export default function ProceedToCheckout() {
                                     Quantity: {item.quantity}
                                 </p>
                                 <p className="text-[#FFC200] text-lg">
-                                    ${item.price}
+                                    ${item.price * (Number(item.quantity))}
                                 </p>
                             </div>
                             <div className="flex items-center gap-2 inline-flex bg-white rounded-lg">
-                                <button onClick={decrease} className="p-2 cursor-pointer hover:bg-[#d6d5d5] transition durition-300 ease text-[#302D2D] text-base bg-white rounded-tl-md rounded-bl-md "><Minus /></button>
-                                <p className="text-black text-base">{quantity}</p>
-                                <button onClick={totalQuantity} className="p-2 cursor-pointer hover:bg-[#d6d5d5] transition durition-300 ease text-[#302D2D] text-base bg-white rounded-tr-md rounded-br-md "><Plus /></button>
+                                <button onClick={()=> decrease(item.id)} className="p-2 cursor-pointer hover:bg-[#d6d5d5] transition durition-300 ease text-[#302D2D] text-base bg-white rounded-tl-md rounded-bl-md "><Minus /></button>
+                                <p className="text-black text-base">{item.quantity || 1}</p>
+                                <button onClick={()=> increase(item.id)} className="p-2 cursor-pointer hover:bg-[#d6d5d5] transition durition-300 ease text-[#302D2D] text-base bg-white rounded-tr-md rounded-br-md "><Plus /></button>
                             </div>
                             </div>
                         </div>
