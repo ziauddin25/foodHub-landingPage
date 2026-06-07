@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import titleImg from '../assets/imgs/logo.png';
+import titleImg from '/imgs/logo.png';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -9,37 +9,37 @@ import 'swiper/css/navigation';
 import '../index.css'
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import dish1 from '../assets/imgs/dish1.png'
-import dish2 from '../assets/imgs/dish2.png'
-import dish3 from '../assets/imgs/dish3.jpg'
-import dish4 from '../assets/imgs/dish4.jpg'
-import dish5 from '../assets/imgs/dish5.webp'
-import dish6 from '../assets/imgs/dish6.jpg'
+import dish1 from '/imgs/dish1.png'
+import dish2 from '/imgs/dish2.png'
+import dish3 from '/imgs/dish3.jpg'
+import dish4 from '/imgs/dish4.jpg'
+import dish5 from '/imgs/dish5.webp'
+import dish6 from '/imgs/dish6.jpg'
 /* others imgs */
 // salad
-import salad1 from '../assets/imgs/others_imgs/salad1.jpg';
-import salad2 from '../assets/imgs/others_imgs/salad2.jpg';
-import salad3 from '../assets/imgs/others_imgs/salad3.jpg';
+import salad1 from '/imgs/others_imgs/salad1.jpg';
+import salad2 from '/imgs/others_imgs/salad2.jpg';
+import salad3 from '/imgs/others_imgs/salad3.jpg';
 //burger
-import burger1 from '../assets/imgs/burgers.jpg';
-import burger2 from '../assets/imgs/others_imgs/burger2.jpg';
-import burger3 from '../assets/imgs/others_imgs/burger3.jpg';
+import burger1 from '/imgs/burgers.jpg';
+import burger2 from '/imgs/others_imgs/burger2.jpg';
+import burger3 from '/imgs/others_imgs/burger3.jpg';
 //pizza
-import pizza1 from '../assets/imgs/menuPizza.jpg';
-import pizza2 from '../assets/imgs/others_imgs/pizza2.jpg';
-import pizza3 from '../assets/imgs/others_imgs/pizza3.jpg';
+import pizza1 from '/imgs/menuPizza.jpg';
+import pizza2 from '/imgs/others_imgs/pizza2.jpg';
+import pizza3 from '/imgs/others_imgs/pizza3.jpg';
 //pizza
-import pasta1 from '../assets/imgs/others_imgs/pasta1.jpg';
-import pasta2 from '../assets/imgs/others_imgs/pasta2.jpg';
-import pasta3 from '../assets/imgs/others_imgs/pasta3.jpg';
+import pasta1 from '/imgs/others_imgs/pasta1.jpg';
+import pasta2 from '/imgs/others_imgs/pasta2.jpg';
+import pasta3 from '/imgs/others_imgs/pasta3.jpg';
 //pizza
-import coffee1 from '../assets/imgs/others_imgs/coffee1.jpg';
-import coffee2 from '../assets/imgs/others_imgs/coffee2.jpg';
-import coffee3 from '../assets/imgs/others_imgs/coffee3.jpg';
+import coffee1 from '/imgs/others_imgs/coffee1.jpg';
+import coffee2 from '/imgs/others_imgs/coffee2.jpg';
+import coffee3 from '/imgs/others_imgs/coffee3.jpg';
 //pizza
-import kabab1 from '../assets/imgs/others_imgs/kabab1.jpg';
-import kabab2 from '../assets/imgs/others_imgs/kabab2.jpg';
-import kabab3 from '../assets/imgs/others_imgs/kabab3.jpg';
+import kabab1 from '/imgs/others_imgs/kabab1.jpg';
+import kabab2 from '/imgs/others_imgs/kabab2.jpg';
+import kabab3 from '/imgs/others_imgs/kabab3.jpg';
 
 
 export const dishData = [
@@ -133,24 +133,27 @@ export default function SpecialDish () {
                         },
                     }}
                 >
-                {dishData.map((item) => (
-                    <SwiperSlide key={item.id} className="!h-auto">
+                {dishData.map((dish) => (
+                    <SwiperSlide key={dish.id} className="!h-auto">
                         <div className="bg-[#0C0B0B] w-full h-full rounded-xl flex flex-col justify-between">
                             <div className="min-h-[300px] !md:h-[280px]">
-                                <img src={item.img} alt="dish-img" className="rounded-t-xl w-full h-full object-cover" />
+                                <img src={dish.img} alt="dish-img" className="rounded-t-xl w-full h-full object-cover" />
                             </div>
                             <div className="text-center p-5">
-                                <h3 className="text-white text-xl font-bold mb-3 capitalize">{item.title}</h3>
-                                <p className="text-[#6D6D6D] text-sm mb-4">{item.desc}</p>
+                                <h3 className="text-white text-xl font-bold mb-3 capitalize">{dish.title}</h3>
+                                <p className="text-[#6D6D6D] text-sm mb-4">{dish.desc}</p>
                                 <div className="flex gap-3 items-center justify-between">
                                     {/* <a href="#order" className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]">Order Now</a> */}
                                      <Link 
-                                        to={`/checkout/${item.id}`} 
+                                        to={`/checkout/${dish.id}`} 
+                                        state={{
+                                            product: dish
+                                        }}
                                         className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]"
                                     >
                                         Order Now
                                     </Link>
-                                    <p className="text-[#FFD600] text-lg font-bold">${item.price}</p>
+                                    <p className="text-[#FFD600] text-lg font-bold">${dish.price}</p>
                                 </div>
                             </div>
                         </div>

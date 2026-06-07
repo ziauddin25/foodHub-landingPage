@@ -1,9 +1,9 @@
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-import titleImg from '../assets/imgs/logo.png';
-import chef1 from '../assets/imgs/chef-1.jpg';
-import chef2 from '../assets/imgs/chef-2.jpg';
-import chef3 from '../assets/imgs/chef-3.jpg';
-import chef4 from '../assets/imgs/chef-4.jpg';
+import titleImg from '/imgs/logo.png';
+import chef1 from '/imgs/chef-1.jpg';
+import chef2 from '/imgs/chef-2.jpg';
+import chef3 from '/imgs/chef-3.jpg';
+import chef4 from '/imgs/chef-4.jpg';
 
 const chefData = [
     {

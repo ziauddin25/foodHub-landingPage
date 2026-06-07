@@ -1,8 +1,10 @@
 import { Coffee, Hamburger, Menu, Pizza, Popcorn, Salad } from "lucide-react";
 import { useEffect, useState } from "react";
-import titleImg from '../assets/imgs/kitchen-logo.jpg';
+import titleImg from '/imgs/kitchen-logo.jpg';
+import { Link } from "react-router-dom";
 
 interface MenuItem {
+    id: number;
     cat: string[]; 
     price: number;
     img: string;
@@ -75,15 +77,27 @@ export default function OurMenu () {
                         )}
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        {categoryItems.map((item, index) => (
-                            <div key={index} className="bg-[#000000] w-full h-auto rounded-xl flex flex-col justify-between">
+                        {categoryItems.map((item) => (
+                            <div key={item.id} className="bg-[#000000] w-full h-auto rounded-xl flex flex-col justify-between">
                                 <div className="md:h-[220px] !h-[300px]">
                                     <img src={item.img} alt="dish-img" className="rounded-t-xl w-full h-full object-cover" />
                                 </div>
                                 <div className="text-center p-5">
                                     <h3 className="text-white text-xl font-bold mb-3 capitalize">{item.title}</h3>
-                                    <p className="text-[#6D6D6D] text-sm mb-2.5">{item.desc}</p>
+                                    <p className="text-[#6D6D6D] text-sm mb-4">{item.desc}</p>
+                                    <div className="flex gap-3 items-center justify-between">
+                                    {/* <a href="#order" className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]">Order Now</a> */}
+                                     <Link 
+                                        to={`/checkout/${item.id}`} 
+                                         state={{
+                                            product: item
+                                        }}
+                                        className="bg-[#FFCC33] rounded-full py-[6px] px-4 text-white text-lg hover:bg-[#eebc27]"
+                                    >
+                                        Order Now
+                                    </Link>
                                     <p className="text-[#FFD600] text-lg font-bold">${item.price}</p>
+                                </div>
                                 </div>
                             </div>
                         ))}

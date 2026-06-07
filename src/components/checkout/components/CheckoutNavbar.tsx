@@ -1,5 +1,5 @@
 import { Search, ShoppingCart, UserRound } from 'lucide-react';
-import logoImg from '../../../assets/imgs/logo-nav.jpg';
+import logoImg from '/imgs/logo-nav.jpg';
 import { useUser } from "@clerk/clerk-react";
 // import { SignedIn} from "@clerk/clerk-react";
 import { useCart } from "../../../context/CartContext";

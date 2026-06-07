@@ -1,5 +1,4 @@
-import { useParams, Link } from "react-router-dom";
-import { dishData } from "../../SpecialDish"; 
+import { Link, useLocation } from "react-router-dom";
 import CheckoutNavbar from '../components/CheckoutNavbar'
 import { Check, Minus, Plus, Star } from "lucide-react";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
@@ -10,8 +9,9 @@ import { useCart } from "../../../context/CartContext";
 
 
 export default function CartPage() {
-  const { id } = useParams();
-  const selectedDish = dishData.find((dish) => dish.id === Number(id));
+  const location = useLocation();
+  const selectedDish = location.state?.product;
+  // const selectedDish = categoryItems? categoryItems.find((dish) => dish.id === Number(id)) : dishData.find((dish) => dish.id === Number(id));
   const [isBadge, setIsBadge] = useState(false);
 
   if (!selectedDish) {
@@ -124,7 +124,7 @@ export default function CartPage() {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    {selectedDish.othersImg?.map((img) => (
+                    {selectedDish.othersImg?.map((img:any) => (
                       <div key={img} onClick={() => setIsActiveImg(img)} className={`h-[80px] md:h-[94px] w-full cursor-pointer border-2 rounded-md overflow-hidden ${
                           isActiveImg === img
                             ? "border-yellow-400"
