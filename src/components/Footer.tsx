@@ -1,7 +1,7 @@
 import { Dot } from "lucide-react";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-import logoImg from '../assets/imgs/logo-nav.jpg'
+import logoImg from '/imgs/logo-nav.jpg'
 
 export default function Footer () {
     return (

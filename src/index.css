@@ -29,7 +29,7 @@ a {
 /* foodHub */
 
 .hero-bg {
-  background-image: url('/src/assets/imgs/bg-hero.png');
+  background-image: url('/imgs/bg-hero.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

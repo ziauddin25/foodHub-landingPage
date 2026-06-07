@@ -1,7 +1,7 @@
 
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import navLogo from '../assets/imgs/logo-nav.jpg';
+import navLogo from '/imgs/logo-nav.jpg';
 
 export default function Nabvar () {
 

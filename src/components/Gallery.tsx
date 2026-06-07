@@ -1,11 +1,11 @@
 import { CirclePlay } from "lucide-react";
-import titleImg from '../assets/imgs/logo.png';
-import video1 from '../assets/imgs/galleryVideo-1.mp4';
-import img1 from '../assets/imgs/gallery-2.jpg';
-import video2 from '../assets/imgs/galleryVideo-3.mp4';
-import img2 from '../assets/imgs/gallery-4.jpg';
-import video3 from '../assets/imgs/galleryVideo-2.mp4';
-import img3 from '../assets/imgs/gallery-6.jpg';
+import titleImg from '/imgs/logo.png';
+import video1 from '/imgs/galleryVideo-1.mp4';
+import img1 from '/imgs/gallery-2.jpg';
+import video2 from '/imgs/galleryVideo-3.mp4';
+import img2 from '/imgs/gallery-4.jpg';
+import video3 from '/imgs/galleryVideo-2.mp4';
+import img3 from '/imgs/gallery-6.jpg';
 
 const galleryImgs = [
     {

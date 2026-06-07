@@ -1,121 +1,156 @@
 [
-    {   "cat": ["All","Salads"],
+    {   "id": 101,
+        "cat": ["All","Salads"],
         "title": "ceaser salad",
         "desc": "Fresh, crunchy, and perfectly crisp, tossed in rich, creamy Caesar flavor.",
         "price": "8.00",
-        "img": "/img/dish1.png"
+        "img": "/imgs/dish1.png",
+        "othersImg": ["/imgs/others_imgs/salad1.jpg", "/imgs/others_imgs/salad2.jpg", "/imgs/others_imgs/salad3.jpg"]
     },
-    {   "cat": ["All","Burgers"],
+    {   "id": 102,
+        "cat": ["All","Burgers"],
         "title": "Classic Beef Burger",
         "desc": "Juicy beef patty with fresh lettuce, cheese, and signature sauce.",
         "price": "8.00",
-        "img": "/img/dish2.png"
+        "img": "/imgs/dish2.png",
+        "othersImg": ["/imgs/burgers.jpg", "/imgs/others_imgs/burger2.jpg", "/imgs/others_imgs/burger3.jpg"]
     },
-    {   "cat": ["All","Pizzas"],
+    {   "id": 103,
+        "cat": ["All","Pizzas"],
         "title": "Pepperoni Pizza",
         "desc": "Loaded with spicy pepperoni and melted mozzarella cheese.",
         "price": "12.00",
-        "img": "/img/dish3.jpg"
+        "img": "/imgs/dish3.jpg",
+        "othersImg": ["/imgs/menuPizza.jpg", "/imgs/others_imgs/pizza2.jpg", "/imgs/others_imgs/pizza3.jpg"]
     },
-    {   "cat": ["All","Snacks"],
+    {   "id": 104,
+        "cat": ["All","Snacks"],
         "title": "Chili Garlic Pasta",
         "desc": "Rich creamy sauce tossed with perfectly cooked pasta.",
         "price": "10.00",
-        "img": "/img/dish4.jpg"
+        "img": "/imgs/dish4.jpg",
+        "othersImg": ["/imgs/others_imgs/pasta1.jpg", "/imgs/others_imgs/pasta2.jpg", "/imgs/others_imgs/pasta3.jpg"]
     },
-    {   "cat": ["All","Drinks"],
+    {   "id": 105,
+        "cat": ["All","Drinks"],
         "title": "Cappuccino Bliss",
         "desc": "A rich and creamy cappuccino with smooth espresso and frothy milk foam.",
         "price": "6.00",
-        "img": "/img/dish5.webp"
+        "img": "/imgs/dish5.webp",
+        "othersImg": ["/imgs/others_imgs/coffee1.jpg", "/imgs/others_imgs/coffee2.jpg", "/imgs/others_imgs/coffee3.jpg"]
     },
-    {   "cat": ["All"],
+    {   "id": 106,
+        "cat": ["All"],
         "title": "Beef Shami Kabab",
         "desc": "Soft beef kabab mixed with spices and lentils, lightly fried for a crispy texture.",
         "price": "16.00",
-        "img": "/img/dish6.jpg"
+        "img": "/imgs/dish6.jpg",
+        "othersImg": ["/imgs/others_imgs/kabab1.jpg", "/imgs/others_imgs/kabab2.jpg", "/imgs/others_imgs/kabab3.jpg"]
     },
-    {   "cat": ["Drinks"],
+    {   "id": 107,
+        "cat": ["Drinks"],
         "title": "Lemonade",
         "desc": "Loaded with spicy pepperoni and melted mozzarella cheese.",
         "price": "5.00",
-        "img": "/img/lemon.jpg"
+        "img": "/imgs/lemon.jpg",
+        "othersImg": ["/imgs/others_imgs/lemon1.jpg", "/imgs/others_imgs/lemon2.jpg", "/imgs/others_imgs/lemon3.jpg"]
     },
-    {   "cat": ["Burgers"],
+    {   "id": 108,
+        "cat": ["Burgers"],
         "title": "Classic Beef Burger",
         "desc": "Juicy beef patty with fresh lettuce, cheese, and signature sauce.",
         "price": "8.00",
-        "img": "/img/burgers.jpg"
+        "img": "/imgs/burgers.jpg",
+        "othersImg": ["/imgs/others_imgs/burgers1.jpg", "/imgs/others_imgs/burgers2.jpg", "/imgs/others_imgs/burgers3.jpg"]
     },
-
     {
+        "id": 109,
         "cat": ["Salads"],
         "title": "Mediterranean Quinoa Salad",
         "desc": "A refreshing mix of quinoa, cucumbers, cherry tomatoes, olives, feta cheese, and lemon herb dressing.",
         "price": "9.50",
-        "img": "/img/quinoa-salad.jpg"
+        "img": "/imgs/quinoa-salad.jpg",
+        "othersImg": ["/imgs/others_imgs/quinoa-salad1.jpg", "/imgs/others_imgs/quinoa-salad2.jpg", "/imgs/others_imgs/quinoa-salad3.jpg"]
     },
     {
+        "id": 110,
         "cat": ["Burgers"],
         "title": "Smoky BBQ Angus Burger",
         "desc": "Flame-grilled Angus beef topped with cheddar cheese, crispy onions, smoky BBQ sauce, and pickles.",
         "price": "13.00",
-        "img": "/img/dish2.png"
+        "img": "/imgs/dish2.png",
+        "othersImg": ["/imgs/others_imgs/bbqBurger1.jpg", "/imgs/others_imgs/bbqBurger2.jpg", "/imgs/others_imgs/bbqBurger3.jpg"]
     },
     {
+        "id": 111,
         "cat": ["Pizzas"],
         "title": "Truffle Mushroom Pizza",
         "desc": "Stone-baked pizza layered with mozzarella, sautéed mushrooms, truffle oil, and parmesan flakes.",
         "price": "15.00",
-        "img": "/img/menuPizza.jpg"
+        "img": "/imgs/menuPizza.jpg",
+        "othersImg": ["/imgs/others_imgs/mushroomPizza1.jpg", "/imgs/others_imgs/mushroomPizza2.jpg", "/imgs/others_imgs/mushroomPizza3.jpg"]
     },
     {
+        "id": 112,
         "cat": ["Snacks"],
         "title": "Nachos Supreme",
         "desc": "Crunchy tortilla chips topped with melted cheese, jalapeños, salsa, sour cream, and spicy beef.",
         "price": "11.00",
-        "img": "/img/nachos.jpg"
+        "img": "/imgs/nachos.jpg",
+        "othersImg": ["/imgs/others_imgs/mushroomPizza1.jpg", "/imgs/others_imgs/mushroomPizza2.jpg", "/imgs/others_imgs/mushroomPizza3.jpg"]
     },
     {
+        "id": 113,
         "cat": ["All","Drinks"],
         "title": "Iced Caramel Latte",
         "desc": "Chilled espresso blended with creamy milk, caramel syrup, and topped with whipped cream.",
         "price": "6.50",
-        "img": "/img/iced-latte.jpg"
+        "img": "/imgs/iced-latte.jpg",
+        "othersImg": ["/imgs/others_imgs/iced-latte1.jpg", "/imgs/others_imgs/iced-latte2.jpg", "/imgs/others_imgs/iced-latte3.jpg"]
     },
     {
+        "id":114 ,
         "cat": ["Drinks"],
         "title": "Chocolate Lava Cake",
         "desc": "Warm chocolate cake with a gooey molten center, served with vanilla ice cream.",
         "price": "7.50",
-        "img": "/img/lava-cake.jpg"
+        "img": "/imgs/lava-cake.jpg",
+        "othersImg": ["/imgs/others_imgs/lava-cake1.jpg", "/imgs/others_imgs/lava-cake2.jpg", "/imgs/others_imgs/lava-cake3.jpg"]
     },
     {
+        "id":115 ,
         "cat": ["All", "Snacks"],
         "title": "Grilled Salmon",
         "desc": "Fresh salmon fillet grilled to perfection with garlic butter sauce and seasonal vegetables.",
         "price": "18.00",
-        "img": "/img/salmon.jpg"
+        "img": "/imgs/salmon.jpg",
+        "othersImg": ["/imgs/others_imgs/grilledSalmon1.jpg", "/imgs/others_imgs/grilledSalmon2.jpg", "/imgs/others_imgs/grilledSalmon3.jpg"]
     },
     {
+        "id": 116,
         "cat": ["Snacks"],
         "title": "Thai Basil Chicken",
         "desc": "Spicy Thai-style chicken stir-fried with basil, garlic, and chili served over jasmine rice.",
         "price": "12.50",
-        "img": "/img/thai-basil.jpg"
+        "img": "/imgs/thai-basil.jpg",
+        "othersImg": ["/imgs/others_imgs/thai-basil1.jpg", "/imgs/others_imgs/thai-basil2.jpg", "/imgs/others_imgs/thai-basil3.jpg"]
     },
     {
+        "id": 117,
         "cat": ["Drinks"],
         "title": "Fresh Mango Smoothie",
         "desc": "Sweet ripe mangoes blended with yogurt and ice for a tropical refreshing drink.",
         "price": "5.50",
-        "img": "/img/mango-smoothie.jpg"
+        "img": "/imgs/mango-smoothie.jpg",
+        "othersImg": ["/imgs/others_imgs/mango-smoothie1.jpg", "/imgs/others_imgs/mango-smoothie2.jpg", "/imgs/others_imgs/mango-smoothie3.jpg"]
     },
     {
+        "id":118 ,
         "cat": ["Snacks"],
         "title": "Creamy Tuscan Chicken Pasta",
         "desc": "Tender chicken tossed in creamy garlic parmesan sauce with spinach and sun-dried tomatoes.",
         "price": "14.00",
-        "img": "/img/tuscan-pasta.jpg"
+        "img": "/imgs/tuscan-pasta.jpg",
+        "othersImg": ["/imgs/others_imgs/tuscan-pasta1.jpg", "/imgs/others_imgs/tuscan-pasta2.jpg", "/imgs/others_imgs/tuscan-pasta3.jpg"]
     }
 ]

@@ -1,7 +1,7 @@
 import { CirclePause, CirclePlay } from "lucide-react";
 import { useRef, useState } from "react";
-import titleImg from '../assets/imgs/kitchen-logo.jpg';
-import bestFoodVideo from '../assets/imgs/foodVideo.mp4';
+import titleImg from '/imgs/kitchen-logo.jpg';
+import bestFoodVideo from '/imgs/foodVideo.mp4';
 
 function BestFood () {
     const videoRef = useRef<HTMLVideoElement | null>(null);

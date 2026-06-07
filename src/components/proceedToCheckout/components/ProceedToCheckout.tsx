@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import CheckoutNavbar from '../../checkout/components/CheckoutNavbar';
 import { useState } from "react";
 import { Minus, Plus, X } from "lucide-react";
-import CartImg from '../../../assets/imgs/cartImg.avif';
+import CartImg from '/imgs/cartImg.avif';
 type CartItem = {
   id: number;
   title: string;
