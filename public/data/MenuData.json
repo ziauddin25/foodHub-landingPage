@@ -71,7 +71,7 @@
     },
     {
         "cat": ["Snacks"],
-        "title": "Loaded Nachos Supreme",
+        "title": "Nachos Supreme",
         "desc": "Crunchy tortilla chips topped with melted cheese, jalapeños, salsa, sour cream, and spicy beef.",
         "price": "11.00",
         "img": "/img/nachos.jpg"
@@ -92,14 +92,14 @@
     },
     {
         "cat": ["All", "Snacks"],
-        "title": "Garlic Butter Grilled Salmon",
+        "title": "Grilled Salmon",
         "desc": "Fresh salmon fillet grilled to perfection with garlic butter sauce and seasonal vegetables.",
         "price": "18.00",
         "img": "/img/salmon.jpg"
     },
     {
         "cat": ["Snacks"],
-        "title": "Thai Basil Chicken Rice Bowl",
+        "title": "Thai Basil Chicken",
         "desc": "Spicy Thai-style chicken stir-fried with basil, garlic, and chili served over jasmine rice.",
         "price": "12.50",
         "img": "/img/thai-basil.jpg"
