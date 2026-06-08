@@ -1,18 +1,31 @@
 import { Link, useLocation } from "react-router-dom";
 import CheckoutNavbar from '../components/CheckoutNavbar'
 import { Check, Minus, Plus, Star } from "lucide-react";
-import { FaRegStarHalfStroke } from "react-icons/fa6";
+// import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { useState } from "react";
 // import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../context/CartContext";
-
+interface ProductRating {
+  rating: number,
+  reviewCount: number
+}
 
 export default function CartPage() {
   const location = useLocation();
   const selectedDish = location.state?.product;
   // const selectedDish = categoryItems? categoryItems.find((dish) => dish.id === Number(id)) : dishData.find((dish) => dish.id === Number(id));
   const [isBadge, setIsBadge] = useState(false);
+  const [isActiveImg, setIsActiveImg ] = useState(selectedDish.img);
+  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
+  const [rating, setRating] = useState<ProductRating>(()=> {
+    const saved = localStorage.getItem(`rating-${selectedDish.id}`);
+    return saved ? JSON.parse(saved) : {
+      rating: 4,
+      reviewCount: 16
+    };
+  });
 
   if (!selectedDish) {
     return (
@@ -22,10 +35,6 @@ export default function CartPage() {
       </div>
     );
   };
-
-  const [isActiveImg, setIsActiveImg ] = useState(selectedDish.img);
-
-  const [quantity, setQuantity] = useState(1);
 
   const increase = ()=> {
     setQuantity(quantity + 1);
@@ -40,7 +49,6 @@ export default function CartPage() {
   //  cart redirct
 
   // const {isSignedIn} = useUser();
-  const navigate = useNavigate();
 
   // const handleBuyNow = () => {
   //   if (!isSignedIn) {
@@ -66,26 +74,35 @@ export default function CartPage() {
   });
 };
 
-    const { addToCart } = useCart();
-    const handleAddToCart = () => {
-      addToCart({
-        id: selectedDish.id,
-        title: selectedDish.title,
-        price: Number(selectedDish.price),
-        // totalPrice: totalPrice,
-        image: selectedDish.img,
-        quantity: quantity,
-      });
+  const { addToCart } = useCart();
+  const handleAddToCart = () => {
+    addToCart({
+      id: selectedDish.id,
+      title: selectedDish.title,
+      price: Number(selectedDish.price),
+      // totalPrice: totalPrice,
+      image: selectedDish.img,
+      quantity: quantity,
+    });
 
-      setIsBadge(true);
+    setIsBadge(true);
 
-      setTimeout(() => {
-        setIsBadge(false)
-      }, 2000);
+    setTimeout(() => {
+      setIsBadge(false)
+    }, 2000);
+  };
+
+  const handleStar = (value:number) => {
+    const hasRated = localStorage.getItem(`rated-${selectedDish.id}`)
+    const updated = {
+      rating: value,
+      reviewCount: hasRated ? rating.reviewCount : rating.reviewCount + 1,
     };
 
-    // navigate(`/cart/${id}`);
-    // };
+    setRating(updated);
+    localStorage.setItem(`rating-${selectedDish.id}`, JSON.stringify(updated));
+    localStorage.setItem(`rated-${selectedDish.id}`, 'true');
+  };
 
     
 
@@ -144,12 +161,16 @@ export default function CartPage() {
                 <div className="p-5 max-w-full md:max-w-[50%]">
                   <h3 className="text-white text-xl md:text-3xl font-bold mb-3 capitalize">{selectedDish.title}</h3>
                   <div className="flex items-center gap-2.5 mb-4">
-                    <Star color="#FFC200" />
-                    <Star color="#FFC200" />
-                    <Star color="#FFC200" />
-                    <Star color="#FFC200" />
-                    <FaRegStarHalfStroke size={24} color="#FFC200" />
-                    <p className="text-[#6D6D6D] text-base">26 Reviews</p>
+                    {[1,2,3,4,5].map((star)=> (
+                      <Star 
+                       key={star}
+                       onClick={()=> handleStar(star)}
+                       className="cursor-pointer"
+                       fill= {rating.rating >= star ? '#FFC200' : 'transparent'}
+                       color="#FFC200"
+                      />
+                    ))}
+                    <p className="text-[#6D6D6D] text-base"> {rating.rating}({rating.reviewCount} Reviews)</p>
                   </div>
                   <p className="text-[#6D6D6D] text-xl mb-4">{selectedDish.desc}</p>
                   <p className="text-[#FFD600] text-lg font-bold">${(Number(selectedDish.price)) * quantity}</p>
