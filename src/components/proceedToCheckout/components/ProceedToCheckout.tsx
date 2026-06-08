@@ -48,9 +48,7 @@ export default function ProceedToCheckout() {
         (total, item) => total + item.price * (item.quantity || 1), 0
     );
 
-    const totalQuantity = cartItems.reduce(
-        (total, item) => total + (item.quantity || 1),0
-    );
+    const totalItems = cartItems.length;
 
     const increase = (id: number) => {
         setCartItems((prev) =>
@@ -224,7 +222,7 @@ export default function ProceedToCheckout() {
                             className="w-32 h-34 object-cover rounded-md"
                             />
 
-                            <div>
+                            <div className="w-full">
                             <h2 className="text-xl font-bold text-white">{item.title}</h2>
 
                             <div className="flex justify-between items-center mb-4">
@@ -256,7 +254,7 @@ export default function ProceedToCheckout() {
                     </div>
                     <div className="flex items-center justify-between mb-3">
                         <h3 className="text-[#6D6D6D] text-base">Items</h3>
-                        <p className="text-[#FFC200] text-base">{totalQuantity}</p>
+                        <p className="text-[#FFC200] text-base">{totalItems}</p>
                     </div>
                     <div className="flex items-center justify-between mb-3">
                         <h3 className="text-[#6D6D6D] text-base">Code Promo</h3>

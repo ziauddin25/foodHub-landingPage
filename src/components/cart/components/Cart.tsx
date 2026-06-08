@@ -56,11 +56,11 @@ export default function Cart() {
       <div className="container">
         <CheckoutNavbar />
         <div className="flex justify-between items-start gap-7 md:gap-5 flex-col md:flex-row">
-          <div className="w-full md:w-[63%] ">
+          <div className="w-full md:w-[63%]">
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-[#111] p-5 rounded-xl flex items-center gap-5"
+                className="bg-[#111] p-5 rounded-xl flex items-center gap-5 mb-5"
               >
                  <input
                   type="checkbox"

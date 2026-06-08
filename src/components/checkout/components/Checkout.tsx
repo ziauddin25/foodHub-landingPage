@@ -120,43 +120,43 @@ export default function CartPage() {
               </ul>
             </nav>
             <div className="bg-[#0C0B0B] w-full h-full rounded-xl overflow-hidden flex flex-col md:flex-row gap-12">
-                <div className="w-full md:w-[50%]">
-                  <div className="h-[280px] md:h-[400px] mb-2">
+              <div className="w-full md:w-[50%]">
+                <div className="h-[280px] md:h-[400px] mb-2">
+                  <img
+                    src={isActiveImg}
+                    alt="dish-img"
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <div className="flex items-center gap-2 p-4">
+                  <div onClick={() => setIsActiveImg(selectedDish.img)} className={`h-[80px] md:h-[94px] w-full cursor-pointer border-2 rounded-md overflow-hidden ${
+                      isActiveImg === selectedDish.img
+                        ? "border-yellow-400"
+                        : "border-transparent"
+                    }`}
+                  >
                     <img
-                      src={isActiveImg}
-                      alt="dish-img"
-                      className="w-full h-full object-cover rounded-xl"
+                      src={selectedDish.img}
+                      alt="main"
+                      className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="flex items-center gap-2 p-4">
-                    <div onClick={() => setIsActiveImg(selectedDish.img)} className={`h-[80px] md:h-[94px] w-full cursor-pointer border-2 rounded-md overflow-hidden ${
-                        isActiveImg === selectedDish.img
+                  {selectedDish.othersImg?.map((img:any) => (
+                    <div key={img} onClick={() => setIsActiveImg(img)} className={`h-[80px] md:h-[94px] w-full cursor-pointer border-2 rounded-md overflow-hidden ${
+                        isActiveImg === img
                           ? "border-yellow-400"
                           : "border-transparent"
                       }`}
                     >
                       <img
-                        src={selectedDish.img}
-                        alt="main"
+                        src={img}
+                        alt={img}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    {selectedDish.othersImg?.map((img:any) => (
-                      <div key={img} onClick={() => setIsActiveImg(img)} className={`h-[80px] md:h-[94px] w-full cursor-pointer border-2 rounded-md overflow-hidden ${
-                          isActiveImg === img
-                            ? "border-yellow-400"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <img
-                          src={img}
-                          alt={img}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
+              </div>
               {/* <div className="w-full md:w-[50%]"> */}
                 <div className="p-5 max-w-full md:max-w-[50%]">
                   <h3 className="text-white text-xl md:text-3xl font-bold mb-3 capitalize">{selectedDish.title}</h3>
