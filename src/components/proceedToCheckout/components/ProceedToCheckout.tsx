@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import CheckoutNavbar from '../../checkout/components/CheckoutNavbar';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Minus, Plus, X } from "lucide-react";
 import CartImg from '/imgs/cartImg.avif';
 type CartItem = {
@@ -10,15 +10,43 @@ type CartItem = {
   image: string;
   quantity?: number;
 };
+
+type UserInfo = {
+    name: string,
+    phone: string,
+    address: string,
+    paymentMethod: "cod" | "online" | "bkash";
+};
+
 export default function ProceedToCheckout() {
     const location = useLocation();
-    // const selectedItems = location.state?.items || [];
-    const [paymentMethod, setPaymentMethod] = useState('cod');
     const [promoCode] = useState('');
     // const [completedOrder, setCompletedOrder ] = useState(false);
     const [cartItems, setCartItems] = useState<CartItem[]>( location.state?.items || []);
     const [showModal, setShowModal] = useState(false);
     const [orderStatus, setOrderStatus] = useState(""); // success | failed
+    const [userInfo, setUserInfo] = useState<UserInfo>(()=> {
+        const saved = localStorage.getItem('userInfo');
+        return saved ? JSON.parse(saved) : {
+            name: '',
+            phone: '',
+            address: '',
+            paymentMethod: '',
+        };
+    });
+    const hasInfo = userInfo.name && userInfo.phone && userInfo.address && userInfo.paymentMethod;
+    const [isEditing, setIsEditing] = useState(false);
+
+    useEffect (()=> {
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    }, [userInfo]);
+
+    const paymentLabelMap: Record<string, string> = {
+        cod: "Cash on Delivery",
+        online: "Credit Card",
+        bkash: "Bkash Payment",
+    };
+
 
     const handlePayment = async () => {
         try {
@@ -110,29 +138,178 @@ export default function ProceedToCheckout() {
               </ul>
             </nav>
             <div className="flex justify-between items-start gap-7 md:gap-5 flex-col md:flex-row"> 
-                <div className="bg-[#111] rounded-xl p-5 w-full md:w-[60%]">
+                {hasInfo && (
+                    <div className="text-white space-y-2 bg-[#111] rounded-xl p-5 w-full md:w-[60%]">
+                        <p><span className="text-[#6D6D6D]">Name:</span> {userInfo.name}</p>
+                        <p><span className="text-[#6D6D6D]">Phone:</span> {userInfo.phone}</p>
+                        <p><span className="text-[#6D6D6D]">Address:</span> {userInfo.address}</p>
+                        <p><span className="text-[#6D6D6D]">Payment Method:</span> {paymentLabelMap[userInfo.paymentMethod] || 'No Selected Method'}</p>
+
+                        <button
+                        onClick={() => setIsEditing(!isEditing)}
+                        className="mt-3 text-lg text-[#FFC200] underline cursor-pointer"
+                        >
+                        Edit
+                        </button>
+                        {isEditing && (
+                            <div className="fixed inset-0 z-50 flex justify-end bg-black/60">
+                                <div className="w-full md:w-[420px] h-full bg-[#111] p-5 animate-slideIn overflow-y-auto">
+                                <div className="flex justify-between items-center mb-5">
+                                    <h2 className="text-white text-xl font-bold">Edit Info</h2>
+                                    <button
+                                    onClick={() => setIsEditing(false)}
+                                    className="text-white cursor-pointer"
+                                    >
+                                    <X />
+                                    </button>
+                                </div>
+                                <div className="space-y-4">
+                                    <div className="space-y-4">
+                                        <input
+                                        className="w-full p-3 bg-white text-black rounded"
+                                        value={userInfo.name}
+                                        onChange={(e) =>
+                                            setUserInfo({ ...userInfo, name: e.target.value })
+                                        }
+                                    />
+
+                                    <input
+                                        className="w-full p-3 bg-white text-black rounded"
+                                        value={userInfo.phone}
+                                        onChange={(e) =>
+                                            setUserInfo({ ...userInfo, phone: e.target.value })
+                                        }
+                                    />
+
+                                    <textarea
+                                    className="w-full p-3 bg-white text-black rounded"
+                                    value={userInfo.address}
+                                    onChange={(e) =>
+                                        setUserInfo({ ...userInfo, address: e.target.value })
+                                    }
+                                    />
+                                    </div>
+                                     <div className="">
+                                        <h2 className="text-white text-xl font-bold mb-5">Payment Method</h2>
+                                        <p className="text-[#6D6D6D] text-lg mb-8">Select the bank for payment of your item</p>
+                                        <label className={`flex gap-4 cursor-pointer justify-between itmes-center px-2 py-3.5 mb-5 rounded-md text-white border border-[2px] ${
+                                        userInfo.paymentMethod === 'cod' ? ' border-[#FFC200]' :' border-[#6D6D6D] '
+                                        }`}
+                                        >
+                                            <span>Cash on Delivery</span>
+                                            <input 
+                                                type="radio"
+                                                name="payment_method"
+                                                value="cod" 
+                                                checked = {userInfo.paymentMethod === 'cod'}
+                                                onChange={(e)=> setUserInfo({...userInfo, paymentMethod: e.target.value as UserInfo['paymentMethod']})}
+                                                className="accent-yellow-400 w-5 h-5 cursor-pointer"
+                                            />
+                                        </label>
+                                        <div className="">
+                                            <label 
+                                                onClick={() => setUserInfo({ ...userInfo, paymentMethod:('online')})}
+                                                className={`flex gap-4 cursor-pointer justify-between items-center px-2 py-3.5  mb-5 rounded-md text-white border-2 transition-all ${
+                                                userInfo.paymentMethod === 'online' ? 'border-[#FFC200] bg-[#1a1a1a]' : 'border-[#6D6D6D]'
+                                                }`}
+                                            >
+                                            <span className="font-medium">Credit Card</span>
+                                            <input 
+                                                type="radio"
+                                                name="payment_method"
+                                                value="online" 
+                                                checked={userInfo.paymentMethod === 'online'}
+                                                onChange={(e) => setUserInfo({...userInfo, paymentMethod:e.target.value as UserInfo['paymentMethod']})}
+                                                className="accent-yellow-400 w-5 h-5 cursor-pointer"
+                                            />  
+                                            </label>
+                                            {userInfo.paymentMethod === 'online' && (
+                                                <div className="mb-5 bg-[#222] border-2 border-[#6D6D6D] text-white rounded-md p-4 w-full animate-fadeIn">
+                                                    <h2 className="text-lg font-semibold mb-3">Card Information</h2>
+                                                    <div className="space-y-3">
+                                                        <div className="">
+                                                            <label htmlFor="name" className="text-md">Name on Card</label>
+                                                            <input placeholder="John Doe" type="text" className="w-full p-2 mt-2 bg-transparent border border-[#6D6D6D] rounded text-sm focus:outline-none" />
+                                                        </div>
+                                                        <div className="">
+                                                            <label htmlFor="name" className="text-md">Card Number</label>
+                                                            <input type="number" inputMode="numeric" maxLength={16}  placeholder="XXXX XXXX XXXX XXXX" className="w-full p-2 mt-2 bg-transparent border border-[#6D6D6D] rounded text-sm focus:outline-none" />
+                                                        </div>
+                                                        <div className="flex justify-between flex-col md:flex-row gap-4">
+                                                            <div className="w-full">
+                                                                <label htmlFor="name" className="text-md">Expire Date</label>
+                                                                <input type='date' placeholder="MM/YY" className="w-full p-2 mt-2 bg-transparent border border-[#6D6D6D] rounded text-sm focus:outline-none" />
+                                                            </div>
+                                                            <div className="w-full">
+                                                                <label htmlFor="name" className="text-md">CVV/CVC</label>
+                                                                <input type='text' inputMode="numeric" placeholder="XYZ" maxLength={4} className="w-full p-2 mt-2 bg-transparent border border-[#6D6D6D] rounded text-sm focus:outline-none" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <label className={`flex gap-4 cursor-pointer justify-between itmes-center px-2 py-3.5 mb-5 rounded-md text-white border border-[2px] ${
+                                            userInfo.paymentMethod === 'bkash' ? ' border-[#FFC200]' :' border-[#6D6D6D] '
+                                        }`}
+                                        >
+                                        <span>Bkash Payment</span>
+                                            <input 
+                                                type="radio"
+                                                name="payment_method"
+                                                value="bkash" 
+                                                checked = {userInfo.paymentMethod === 'bkash'}
+                                                onChange={(e)=> setUserInfo({...userInfo, paymentMethod: e.target.value as UserInfo['paymentMethod']})}
+                                                className="accent-yellow-400 w-5 h-5 cursor-pointer"
+                                            />
+                                        </label>
+                                    </div>
+
+                                    <button
+                                    onClick={() => setIsEditing(false)}
+                                    className="w-full bg-[#FFC200] py-2 rounded text-black"
+                                    >
+                                    Save
+                                    </button>
+                                </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+                {!hasInfo && (
+                    <div className="bg-[#111] rounded-xl p-5 w-full md:w-[60%]">
                     <h2 className="text-white text-3xl font-bold mb-3.5">Check Out Your Items</h2>
                     <p className="text-[#6D6D6D] text-lg mb-6">For a better experience, check your item and choose your shiping before ordering </p>
                     <div className="">
                         <div className="flex flex-col md:flex-row gap-6 items-center mb-12">
                             <div className="flex gap-3 flex-col w-full">
                                 <label htmlFor="name" className="text-white text-base">Name</label>
-                                <input type="text" placeholder="Enter your name..." className="text-black p-3.5 md:p-3 bg-white focus:outline-none rounded-md" />
+                                <input type="text" placeholder="Enter your name..." className="text-black p-3.5 md:p-3 bg-white focus:outline-none rounded-md" 
+                                 value={userInfo.name}
+                                 onChange={(e)=> {setUserInfo({...userInfo, name: e.target.value})}}
+                                />
                             </div>
                             <div className="flex gap-3 flex-col w-full">
                                 <label htmlFor="name" className="text-white text-base">Phone</label>
-                                <input type="number" placeholder="Enter your phone..." className="text-black p-3.5 md:p-3 bg-white focus:outline-none rounded-md" />
+                                <input type="number" placeholder="Enter your phone..." className="text-black p-3.5 md:p-3 bg-white focus:outline-none rounded-md"
+                                 value={userInfo.phone}
+                                 onChange={(e)=> {setUserInfo({...userInfo, phone: e.target.value})}}
+                                />
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col w-full mb-12">
                             <label htmlFor="text" className="text-white text-base">Delivery Address</label>
-                            <textarea name="text" id="" placeholder="" className="text-black p-3 bg-white focus:outline-none rounded-md min-h-[130px]"></textarea>
+                            <textarea name="text" id="" placeholder="" className="text-black p-3 bg-white focus:outline-none rounded-md min-h-[130px]" 
+                            value={userInfo.address}
+                            onChange={(e)=> {setUserInfo({...userInfo, address: e.target.value})}}
+                            ></textarea>
                         </div>
                         <div className="">
                             <h2 className="text-white text-xl font-bold mb-5">Payment Method</h2>
                             <p className="text-[#6D6D6D] text-lg mb-8">Select the bank for payment of your item</p>
                             <label className={`flex gap-4 cursor-pointer justify-between itmes-center px-2 py-3.5 mb-5 rounded-md text-white border border-[2px] ${
-                                paymentMethod === 'cod' ? ' border-[#FFC200]' :' border-[#6D6D6D] '
+                               userInfo.paymentMethod === 'cod' ? ' border-[#FFC200]' :' border-[#6D6D6D] '
                             }`}
                             >
                                 <span>Cash on Delivery</span>
@@ -140,16 +317,16 @@ export default function ProceedToCheckout() {
                                     type="radio"
                                     name="payment_method"
                                     value="cod" 
-                                    checked = {paymentMethod === 'cod'}
-                                    onChange={(e)=> setPaymentMethod(e.target.value)}
+                                    checked = {userInfo.paymentMethod === 'cod'}
+                                    onChange={(e)=> setUserInfo({...userInfo, paymentMethod: e.target.value as UserInfo['paymentMethod']})}
                                     className="accent-yellow-400 w-5 h-5 cursor-pointer"
                                 />
                             </label>
                             <div className="">
                                 <label 
-                                    onClick={() => setPaymentMethod('online')}
+                                    onClick={() => setUserInfo({ ...userInfo, paymentMethod:('online')})}
                                     className={`flex gap-4 cursor-pointer justify-between items-center px-2 py-3.5  mb-5 rounded-md text-white border-2 transition-all ${
-                                    paymentMethod === 'online' ? 'border-[#FFC200] bg-[#1a1a1a]' : 'border-[#6D6D6D]'
+                                    userInfo.paymentMethod === 'online' ? 'border-[#FFC200] bg-[#1a1a1a]' : 'border-[#6D6D6D]'
                                     }`}
                                 >
                                 <span className="font-medium">Credit Card</span>
@@ -157,12 +334,12 @@ export default function ProceedToCheckout() {
                                     type="radio"
                                     name="payment_method"
                                     value="online" 
-                                    checked={paymentMethod === 'online'}
-                                    onChange={(e) => setPaymentMethod(e.target.value)}
+                                    checked={userInfo.paymentMethod === 'online'}
+                                    onChange={(e) => setUserInfo({...userInfo, paymentMethod:e.target.value as UserInfo['paymentMethod']})}
                                     className="accent-yellow-400 w-5 h-5 cursor-pointer"
                                 />  
                                 </label>
-                                {paymentMethod === 'online' && (
+                                {userInfo.paymentMethod === 'online' && (
                                     <div className="mb-5 bg-[#222] border-2 border-[#6D6D6D] text-white rounded-md p-4 w-full animate-fadeIn">
                                         <h2 className="text-lg font-semibold mb-3">Card Information</h2>
                                         <div className="space-y-3">
@@ -172,7 +349,7 @@ export default function ProceedToCheckout() {
                                             </div>
                                             <div className="">
                                                 <label htmlFor="name" className="text-md">Card Number</label>
-                                                <input type="number" inputMode="numeric" maxLength={19}  placeholder="XXXX XXXX XXXX XXXX" className="w-full p-2 mt-2 bg-transparent border border-[#6D6D6D] rounded text-sm focus:outline-none" />
+                                                <input type="number" inputMode="numeric" maxLength={16}  placeholder="XXXX XXXX XXXX XXXX" className="w-full p-2 mt-2 bg-transparent border border-[#6D6D6D] rounded text-sm focus:outline-none" />
                                             </div>
                                             <div className="flex justify-between flex-col md:flex-row gap-4">
                                                 <div className="w-full">
@@ -189,7 +366,7 @@ export default function ProceedToCheckout() {
                                 )}
                             </div>
                              <label className={`flex gap-4 cursor-pointer justify-between itmes-center px-2 py-3.5 mb-5 rounded-md text-white border border-[2px] ${
-                                paymentMethod === 'bkash' ? ' border-[#FFC200]' :' border-[#6D6D6D] '
+                                userInfo.paymentMethod === 'bkash' ? ' border-[#FFC200]' :' border-[#6D6D6D] '
                             }`}
                             >
                                 <span>Bkash Payment</span>
@@ -197,14 +374,15 @@ export default function ProceedToCheckout() {
                                     type="radio"
                                     name="payment_method"
                                     value="bkash" 
-                                    checked = {paymentMethod === 'bkash'}
-                                    onChange={(e)=> setPaymentMethod(e.target.value)}
+                                    checked = {userInfo.paymentMethod === 'bkash'}
+                                    onChange={(e)=> setUserInfo({...userInfo, paymentMethod: e.target.value as UserInfo['paymentMethod']})}
                                     className="accent-yellow-400 w-5 h-5 cursor-pointer"
                                 />
                             </label>
                         </div>
                     </div>
                 </div>
+                )}
                 <div className="w-full md:w-[40%] bg-[#111] h-auto p-5 rounded-xl">
                     <div className="mb-8">
                         <h2 className="text-white text-3xl font-bold mb-3.5">Current Order</h2>
