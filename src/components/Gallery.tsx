@@ -50,7 +50,7 @@ export default function Gallery () {
                         >
                             {item.isVideo ? 
                             <div className="h-full w-full">
-                                <video src={item.video} controls muted className="h-full w-full object-cover" />
+                                <video src={item.video} controls autoPlay loop muted className="h-full w-full object-cover" />
                                 <button className="cursor-pointer absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 z-10 duration-300">
                                     <CirclePlay color="#fff" size={30} />
                                 </button>
