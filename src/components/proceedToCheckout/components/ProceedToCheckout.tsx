@@ -471,7 +471,7 @@ export default function ProceedToCheckout() {
                                         </div>
                                         <div className="flex justify-between items-center mb-3">
                                             <h3 className="text-md text-white">Total</h3>
-                                            <p className="text-[#6D6D6D] text-md">${grandTotal}</p>
+                                            <p className="text-[#6D6D6D] text-md">${grandTotal.toFixed(2)}</p>
                                         </div>
                                         <div className="flex justify-between items-center mb-3">
                                             <h3 className="text-md text-white">Placed on</h3>
